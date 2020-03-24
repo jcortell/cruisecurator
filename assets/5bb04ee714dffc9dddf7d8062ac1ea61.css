@@ -401,6 +401,16 @@ img.mfp-img {
       /*rtl:begin:ignore*/
   /*
       /*rtl:end:ignore*/
+  /*
+ * Container style
+ */
+  /*
+ * Scrollbar rail styles
+ */
+  /*
+ * Scrollbar thumb styles
+ */
+  /* MS supports */
   /*!
  * animate.css -https://daneden.github.io/animate.css/
  * Version - 3.7.2
@@ -7100,6 +7110,87 @@ img.mfp-img {
     padding: 6px; }
   .brz .select2-container--classic.select2-container--open .select2-dropdown {
     border-color: #5897fb; }
+  .brz .ps {
+    overflow: hidden !important;
+    overflow-anchor: none;
+    -ms-overflow-style: none;
+    touch-action: auto;
+    -ms-touch-action: auto; }
+  .brz .ps__rail-x {
+    display: none;
+    opacity: 0;
+    transition: background-color .2s linear, opacity .2s linear;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    height: 15px;
+    /* there must be 'bottom' or 'top' for ps__rail-x */
+    bottom: 0px;
+    /* please don't change 'position' */
+    position: absolute; }
+  .brz .ps__rail-y {
+    display: none;
+    opacity: 0;
+    transition: background-color .2s linear, opacity .2s linear;
+    -webkit-transition: background-color .2s linear, opacity .2s linear;
+    width: 15px;
+    /* there must be 'right' or 'left' for ps__rail-y */
+    right: 0;
+    /* please don't change 'position' */
+    position: absolute; }
+  .brz .ps--active-x > .ps__rail-x,
+  .brz .ps--active-y > .ps__rail-y {
+    display: block;
+    background-color: transparent; }
+  .brz .ps:hover > .ps__rail-x,
+  .brz .ps:hover > .ps__rail-y,
+  .brz .ps--focus > .ps__rail-x,
+  .brz .ps--focus > .ps__rail-y,
+  .brz .ps--scrolling-x > .ps__rail-x,
+  .brz .ps--scrolling-y > .ps__rail-y {
+    opacity: 0.6; }
+  .brz .ps .ps__rail-x:hover,
+  .brz .ps .ps__rail-y:hover,
+  .brz .ps .ps__rail-x:focus,
+  .brz .ps .ps__rail-y:focus,
+  .brz .ps .ps__rail-x.ps--clicking,
+  .brz .ps .ps__rail-y.ps--clicking {
+    background-color: #eee;
+    opacity: 0.9; }
+  .brz .ps__thumb-x {
+    background-color: #aaa;
+    border-radius: 6px;
+    transition: background-color .2s linear, height .2s ease-in-out;
+    -webkit-transition: background-color .2s linear, height .2s ease-in-out;
+    height: 6px;
+    /* there must be 'bottom' for ps__thumb-x */
+    bottom: 2px;
+    /* please don't change 'position' */
+    position: absolute; }
+  .brz .ps__thumb-y {
+    background-color: #aaa;
+    border-radius: 6px;
+    transition: background-color .2s linear, width .2s ease-in-out;
+    -webkit-transition: background-color .2s linear, width .2s ease-in-out;
+    width: 6px;
+    /* there must be 'right' for ps__thumb-y */
+    right: 2px;
+    /* please don't change 'position' */
+    position: absolute; }
+  .brz .ps__rail-x:hover > .ps__thumb-x,
+  .brz .ps__rail-x:focus > .ps__thumb-x,
+  .brz .ps__rail-x.ps--clicking .ps__thumb-x {
+    background-color: #999;
+    height: 11px; }
+  .brz .ps__rail-y:hover > .ps__thumb-y,
+  .brz .ps__rail-y:focus > .ps__thumb-y,
+  .brz .ps__rail-y.ps--clicking .ps__thumb-y {
+    background-color: #999;
+    width: 11px; }
+  @supports (-ms-overflow-style: none) {
+    .brz .ps {
+      overflow: auto !important; } }
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .brz .ps {
+      overflow: auto !important; } }
   .brz .brz-forms2 {
     width: 100%; }
     .brz .brz-forms2__wrap, .brz .brz-forms2__fields {
@@ -7394,9 +7485,33 @@ img.mfp-img {
   .brz.brz:not(.brz-ed) .brz-forms2__field-select .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
     border-color: transparent transparent currentColor; }
   .brz.brz:not(.brz-ed) .brz-forms2__field-select .select2-container--open .select2-dropdown {
-    top: 1px; }
+    top: 1px;
+    max-height: 200px;
+    overflow: hidden; }
   .brz.brz:not(.brz-ed) .brz-forms2__field-select .select2-dropdown--below {
     background-color: transparent; }
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps__thumb-y {
+    background-color: rgba(0, 0, 0, 0.2); }
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps .ps__rail-x:hover,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps .ps__rail-y:hover,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps .ps__rail-x:focus,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps .ps__rail-y:focus,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps .ps__rail-x.ps--clicking,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps .ps__rail-y.ps--clicking {
+    background-color: transparent; }
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps__rail-y:hover > .ps__thumb-y,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps__rail-y:focus > .ps__thumb-y,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps__rail-y.ps--clicking .ps__thumb-y {
+    width: 6px; }
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps__rail-x,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps__rail-y,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps:hover > .ps__rail-x,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps:hover > .ps__rail-y,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps--focus > .ps__rail-x,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps--focus > .ps__rail-y,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps--scrolling-x > .ps__rail-x,
+  .brz.brz:not(.brz-ed) .brz-forms2__field-select .ps--scrolling-y > .ps__rail-y {
+    opacity: 1; }
   .brz.brz:not(.brz-ed) .flatpickr-calendar {
     font-family: "Lato", sans-serif;
     width: 306px; }
